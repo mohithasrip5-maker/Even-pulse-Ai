@@ -82,28 +82,23 @@ setBreakingEvent(announcement);
 
   <div className="ticker-track">
 
-  {breakingEvent ? (
-    <button
-      className="ticker-event"
-      onClick={() => {
-        const event = events.find(
-          (e) => e.eventId === breakingEvent.eventId
-        );
-
-        if (event) {
-          onViewEvent(event);
-        }
-      }}
-    >
-      🚀 {breakingEvent.eventName}
-      <span>•</span>
-      📍 {breakingEvent.location}
-      <span>•</span>
-      🕐 {breakingEvent.startTime}
-      <span>→</span>
-    </button>
-  ) : (
+  {events.length === 0 ? (
     <span>No events announced yet</span>
+  ) : (
+    events.slice(0, 1).map((event) => (
+      <button
+        key={event.eventId}
+        className="ticker-event"
+        onClick={() => onViewEvent(event)}
+      >
+        🚀 {event.name}
+        <span>•</span>
+        📍 {event.location}
+        <span>•</span>
+        🕐 {event.startTime}
+        <span>→</span>
+      </button>
+    ))
   )}
 
 </div>
