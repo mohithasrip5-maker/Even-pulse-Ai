@@ -4,13 +4,13 @@ import { io } from "socket.io-client";
 function PublicHome({ onViewEvent }) {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-
+const [breakingEvent, setBreakingEvent] = useState(null);
   useEffect(() => {
   const socket = io("https://event-pulse-ai-backend.onrender.com");
 
   socket.on("event-announcement", (announcement) => {
     console.log("📢 LIVE ANNOUNCEMENT:", announcement);
-
+setBreakingEvent(announcement);
     setEvents((prevEvents) => {
       const exists = prevEvents.some(
         (event) => event.eventId === announcement.eventId
@@ -40,8 +40,20 @@ function PublicHome({ onViewEvent }) {
       );
 
       if (response.data.success) {
-        setEvents(response.data.events);
-      }
+  setEvents(response.data.events);
+
+  if (response.data.events.length > 0) {
+    const latestEvent = response.data.events[0];
+
+    setBreakingEvent({
+      eventId: latestEvent.eventId,
+      eventName: latestEvent.name,
+      location: latestEvent.location,
+      date: latestEvent.date,
+      startTime: latestEvent.startTime
+    });
+  }
+}
     } catch (error) {
       console.log("Public events error:", error);
     } finally {
@@ -70,29 +82,31 @@ function PublicHome({ onViewEvent }) {
 
   <div className="ticker-track">
 
-    {events.length === 0 ? (
-      <span>
-        No events announced yet
-      </span>
-    ) : (
-      events.map((event) => (
-        <button
-          key={event.eventId}
-          className="ticker-event"
-          onClick={() => onViewEvent(event)}
-        >
-          🚀 {event.name}
-          <span>•</span>
-          📍 {event.location}
-          <span>•</span>
-          🕐 {event.startTime}
-          <span>→</span>
-        </button>
-      ))
-    )}
+  {breakingEvent ? (
+    <button
+      className="ticker-event"
+      onClick={() => {
+        const event = events.find(
+          (e) => e.eventId === breakingEvent.eventId
+        );
 
-  </div>
+        if (event) {
+          onViewEvent(event);
+        }
+      }}
+    >
+      🚀 {breakingEvent.eventName}
+      <span>•</span>
+      📍 {breakingEvent.location}
+      <span>•</span>
+      🕐 {breakingEvent.startTime}
+      <span>→</span>
+    </button>
+  ) : (
+    <span>No events announced yet</span>
+  )}
 
+</div>
 </div>
         <div>
           <h1>
