@@ -9,7 +9,7 @@ function EventDiscovery({ onSelectEvent }) {
     const loadEvents = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/events"
+          "https://event-pulse-ai-backend.onrender.com/api/events"
         );
 
         if (response.data.success) {

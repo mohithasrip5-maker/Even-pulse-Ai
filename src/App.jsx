@@ -32,7 +32,7 @@ function DashboardLive({ setPage, announceEvent }) {
   const loadLiveData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/live-dashboard/EVT001"
+        "https://event-pulse-ai-backend.onrender.com/api/live-dashboard/EVT001"
       );
 
       if (response.data.success) {
@@ -69,7 +69,7 @@ function DashboardLive({ setPage, announceEvent }) {
   ========================================================= */
 
   useEffect(() => {
-    const socket = io("http://localhost:5000");
+    const socket = io("https://event-pulse-ai-backend.onrender.com");
 
     socket.emit("join-event", "EVT001");
 
@@ -118,7 +118,7 @@ function DashboardLive({ setPage, announceEvent }) {
   const simulateCrowdSurge = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/simulate-crowd-surge",
+        "https://event-pulse-ai-backend.onrender.com/api/simulate-crowd-surge",
         {
           startCrowd: liveData.currentAttendance,
         }
@@ -148,7 +148,7 @@ function DashboardLive({ setPage, announceEvent }) {
   const getAICopilot = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/action-plan",
+        "https://event-pulse-ai-backend.onrender.com/api/action-plan",
         {
           problem:
             liveData.riskLevel === "CRITICAL"
@@ -629,7 +629,7 @@ const [selectedEvent, setSelectedEvent] = useState(null);
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/attendance/${participantId}`
+        `https://event-pulse-ai-backend.onrender.com/api/attendance/${participantId}`
       );
 
       if (response.data.success) {
@@ -666,7 +666,7 @@ const [announcementMessage, setAnnouncementMessage] =
       try {
 
         const response = await axios.get(
-          "http://localhost:5000/api/live-dashboard/EVT001"
+          "https://event-pulse-ai-backend.onrender.com/api/live-dashboard/EVT001"
         );
 
         if (response.data.success) {
@@ -746,7 +746,7 @@ const [announcementMessage, setAnnouncementMessage] =
     try {
 
       const response = await axios.get(
-        `http://localhost:5000/api/participants/email/${email}`
+        `https://event-pulse-ai-backend.onrender.com/api/participants/email/${email}`
       );
 
       if (response.data.success) {
@@ -866,7 +866,7 @@ const [announcementMessage, setAnnouncementMessage] =
     try {
 
       const response = await axios.post(
-        "http://localhost:5000/api/emergency-response",
+        "https://event-pulse-ai-backend.onrender.com/api/emergency-response",
         {
           location: "Main Hall",
 
@@ -910,7 +910,7 @@ const [announcementMessage, setAnnouncementMessage] =
 const announceEvent = async () => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/events/EVT001/announce"
+      "https://event-pulse-ai-backend.onrender.com/api/events/EVT001/announce"
     );
 
     console.log("📢 Event Announcement:", response.data);

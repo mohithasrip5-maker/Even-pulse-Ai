@@ -17,7 +17,7 @@ function CheckIn() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/checkin",
+        "https://event-pulse-ai-backend.onrender.com/api/checkin",
         {
           participantId: id,
           eventId: "EVT001"
@@ -62,7 +62,7 @@ function CheckIn() {
           }
 
           const response = await axios.post(
-            "http://localhost:5000/api/checkin/qr",
+            "https://event-pulse-ai-backend.onrender.com/api/checkin/qr",
             {
               participantId: qrData.participantId,
               eventId: "EVT001"

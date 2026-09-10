@@ -14,7 +14,7 @@ function DigitalPass() {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/participants/${participantId}/pass`
+        `https://event-pulse-ai-backend.onrender.com/api/participants/${participantId}/pass`
       );
 
       setPass(response.data);

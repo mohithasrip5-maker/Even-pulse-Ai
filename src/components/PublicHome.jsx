@@ -6,7 +6,7 @@ function PublicHome({ onViewEvent }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-  const socket = io("http://localhost:5000");
+  const socket = io("https://event-pulse-ai-backend.onrender.com");
 
   socket.on("event-announcement", (announcement) => {
     console.log("📢 LIVE ANNOUNCEMENT:", announcement);
@@ -36,7 +36,7 @@ function PublicHome({ onViewEvent }) {
   const loadEvents = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/events"
+        "https://event-pulse-ai-backend.onrender.com/api/events"
       );
 
       if (response.data.success) {
