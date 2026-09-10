@@ -3801,3 +3801,1454 @@ body {
   margin: 0;
   text-align: center;
 }
+/* Full-screen QR page */
+body:has(.event-entry-qr) {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #080b18 !important;
+}
+
+#root:has(.event-entry-qr) {
+  width: 100% !important;
+  min-height: 100vh !important;
+}
+
+.main-content:has(.event-entry-qr) {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw !important;
+  max-width: none !important;
+  min-height: 100vh !important;
+}
+
+.event-entry-qr {
+  width: 100vw !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+} intha styling aa oru premium project like oru google level ku create pannu
+/* =========================================================
+   EVENTPULSE AI — PROFESSIONAL UI POLISH v2
+   Final override layer — keeps existing JSX/class names intact
+   ========================================================= */
+
+:root {
+  --ep-bg: #070b16;
+  --ep-surface: rgba(17, 24, 39, .82);
+  --ep-surface-2: rgba(22, 30, 49, .9);
+  --ep-surface-3: rgba(255,255,255,.045);
+  --ep-border: rgba(148,163,184,.13);
+  --ep-border-strong: rgba(124,92,255,.32);
+  --ep-text: #f8fafc;
+  --ep-muted: #94a3b8;
+  --ep-subtle: #64748b;
+  --ep-primary: #7c5cff;
+  --ep-cyan: #22d3ee;
+  --ep-success: #34d399;
+  --ep-warning: #fbbf24;
+  --ep-danger: #fb7185;
+  --ep-radius-sm: 10px;
+  --ep-radius-md: 14px;
+  --ep-radius-lg: 18px;
+  --ep-radius-xl: 22px;
+  --ep-shadow: 0 18px 55px rgba(0,0,0,.22);
+  --ep-shadow-hover: 0 24px 70px rgba(0,0,0,.34);
+}
+
+/* ---------- GLOBAL REFINEMENT ---------- */
+.app-layout {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 72% 0%, rgba(124,92,255,.10), transparent 30%),
+    radial-gradient(circle at 0% 100%, rgba(34,211,238,.055), transparent 28%),
+    var(--ep-bg);
+}
+
+.app-layout::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.7), transparent 90%);
+}
+
+.main-content {
+  padding-bottom: 40px;
+}
+
+button,
+a,
+input,
+.card,
+.stat-card,
+.analytics-card,
+.analytics-panel,
+.setting-row,
+.alert-item,
+.emergency-card,
+.public-event-card {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--ep-cyan);
+  outline-offset: 3px;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+  width: 252px;
+  padding: 20px 14px 16px;
+  background: linear-gradient(180deg, rgba(12,18,34,.98), rgba(7,11,22,.99));
+  border-right: 1px solid rgba(148,163,184,.12);
+  box-shadow: 18px 0 70px rgba(0,0,0,.22);
+  backdrop-filter: blur(24px) saturate(130%);
+}
+
+.side-logo {
+  padding: 4px 9px 20px;
+  border-bottom-color: rgba(148,163,184,.11);
+}
+
+.side-logo .college-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(124,92,255,.18);
+}
+
+.side-logo h2 {
+  font-size: 16px;
+  letter-spacing: -.45px;
+}
+
+.side-logo h2 span {
+  color: transparent;
+  background: linear-gradient(90deg, #9b8cff, #36d9ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.side-logo small {
+  color: #64748b;
+  letter-spacing: 1.4px;
+}
+
+.sidebar nav {
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.sidebar nav a,
+.side-bottom a {
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: #8793ab;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sidebar nav a:hover,
+.side-bottom a:hover {
+  color: #e8ecf7;
+  background: rgba(124,92,255,.075);
+  border-color: rgba(124,92,255,.10);
+  transform: translateX(2px);
+}
+
+.sidebar nav a.active {
+  color: #fff;
+  background: linear-gradient(90deg, rgba(124,92,255,.20), rgba(34,211,238,.055));
+  border-color: rgba(124,92,255,.22);
+  box-shadow: 0 10px 28px rgba(71,52,168,.14);
+}
+
+.sidebar nav a.active::before {
+  left: -14px;
+  width: 3px;
+  height: 24px;
+  top: 10px;
+}
+
+.status {
+  margin-bottom: 4px;
+  padding: 11px 12px;
+  border-top: 1px solid rgba(148,163,184,.08);
+  color: #64748b;
+}
+
+/* ---------- DASHBOARD HEADER ---------- */
+.dashboard-header {
+  padding: 28px 35px 18px;
+}
+
+.dashboard-header h1 {
+  font-size: clamp(25px, 2.2vw, 31px);
+  letter-spacing: -.9px;
+}
+
+.dashboard-header p {
+  color: #8290a9;
+  font-size: 12px;
+}
+
+.organizer {
+  padding: 6px 11px 6px 6px;
+  border-color: rgba(148,163,184,.13);
+  background: rgba(255,255,255,.035);
+  transition: .25s ease;
+}
+
+.organizer:hover {
+  border-color: rgba(124,92,255,.25);
+  background: rgba(124,92,255,.055);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+}
+
+/* ---------- PREMIUM CONTENT CARDS ---------- */
+.event-title,
+.health-card,
+.stat-card,
+.ai-copilot-card,
+.ai-copilot,
+.analytics-card,
+.analytics-panel,
+.alert-summary-card,
+.alert-item,
+.emergency-card,
+.settings-card,
+.twin-ai,
+.venue-map {
+  border-color: var(--ep-border);
+  box-shadow: var(--ep-shadow);
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+
+.event-title:hover,
+.health-card:hover,
+.stat-card:hover,
+.analytics-card:hover,
+.analytics-panel:hover,
+.settings-card:hover,
+.emergency-card:hover,
+.alert-item:hover {
+  border-color: rgba(124,92,255,.24);
+  box-shadow: var(--ep-shadow-hover);
+}
+
+.event-title {
+  min-height: 104px;
+  padding: 24px 26px;
+  border-radius: var(--ep-radius-lg);
+  background: linear-gradient(135deg, rgba(25,32,57,.90), rgba(11,17,31,.92));
+}
+
+.event-title p {
+  color: #8f82ff;
+  font-size: 9px;
+  letter-spacing: 1.8px;
+}
+
+.event-title h2 {
+  font-size: 23px;
+  letter-spacing: -.5px;
+}
+
+.event-title span {
+  color: #8290a9;
+}
+
+.live {
+  padding: 7px 11px;
+  background: rgba(52,211,153,.07);
+  border-color: rgba(52,211,153,.20);
+  color: #5ee7b1;
+  font-size: 9px;
+}
+
+/* ---------- HEALTH ---------- */
+.health-card {
+  min-height: 118px;
+  padding: 23px 27px;
+  border-radius: var(--ep-radius-lg);
+  background: linear-gradient(135deg, rgba(37,33,84,.56), rgba(14,21,39,.88));
+}
+
+.health-card h2 {
+  font-size: 42px;
+  letter-spacing: -2px;
+}
+
+.health-circle {
+  width: 86px;
+  height: 86px;
+  border-width: 6px;
+  background: radial-gradient(circle, rgba(124,92,255,.09), transparent 68%);
+}
+
+/* ---------- STAT CARDS ---------- */
+.stats-grid {
+  gap: 14px;
+}
+
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 128px;
+  padding: 20px;
+  border-radius: var(--ep-radius-md);
+  background: linear-gradient(145deg, rgba(18,26,45,.88), rgba(10,16,29,.94));
+}
+
+.stat-card::after,
+.analytics-card::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: -55px;
+  top: -55px;
+  border-radius: 50%;
+  background: rgba(124,92,255,.09);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.stat-card p,
+.analytics-card p {
+  color: #77849e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+
+.stat-card h2 {
+  margin-top: 8px;
+  font-size: 28px;
+  letter-spacing: -.8px;
+}
+
+.stat-icon {
+  border-radius: 11px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
+}
+
+/* ---------- AI COPILOT ---------- */
+.ai-copilot-card,
+.ai-copilot {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--ep-radius-lg);
+  background:
+    radial-gradient(circle at 92% 12%, rgba(34,211,238,.12), transparent 27%),
+    radial-gradient(circle at 12% 110%, rgba(124,92,255,.12), transparent 30%),
+    linear-gradient(135deg, rgba(20,28,51,.96), rgba(9,15,29,.98));
+}
+
+.ai-copilot-card::after,
+.ai-copilot::after {
+  content: "AI";
+  position: absolute;
+  right: 24px;
+  bottom: -34px;
+  font-size: 120px;
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(255,255,255,.018);
+  pointer-events: none;
+}
+
+.ai-copilot-card h2,
+.ai-copilot h2 {
+  position: relative;
+  z-index: 1;
+  font-size: 20px;
+  letter-spacing: -.35px;
+}
+
+.ai-copilot-card p,
+.ai-copilot > p {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  color: #9aa7c0 !important;
+  line-height: 1.7;
+}
+
+.ai-copilot-card button,
+.ai-copilot button,
+.register-btn,
+.login-button {
+  position: relative;
+  overflow: hidden;
+  border-radius: 11px;
+  background: linear-gradient(100deg, #6d4cff, #4678ff 55%, #1bc9e9);
+  box-shadow: 0 10px 28px rgba(88,71,205,.24);
+}
+
+.ai-copilot-card button::before,
+.ai-copilot button::before,
+.register-btn::before,
+.login-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,.18) 50%, transparent 75%);
+  transform: translateX(-120%);
+  transition: transform .55s ease;
+}
+
+.ai-copilot-card button:hover::before,
+.ai-copilot button:hover::before,
+.register-btn:hover::before,
+.login-button:hover::before {
+  transform: translateX(120%);
+}
+
+/* ---------- COMMON INNER PAGES ---------- */
+.twin-page,
+.alerts-page,
+.emergency-page,
+.analytics-page,
+.settings-page {
+  padding: 30px 35px;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.section-heading h1,
+.twin-header h1 {
+  font-size: 25px;
+  letter-spacing: -.65px;
+}
+
+.section-heading p,
+.twin-header p {
+  color: #7f8da7;
+  margin-top: 6px;
+}
+
+/* ---------- DIGITAL TWIN ---------- */
+.venue-map {
+  min-height: 500px;
+  border-radius: var(--ep-radius-xl);
+  background:
+    linear-gradient(rgba(124,92,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,92,255,.025) 1px, transparent 1px),
+    radial-gradient(circle at 50% 40%, rgba(124,92,255,.09), transparent 42%),
+    #0b1221;
+  background-size: 32px 32px, 32px 32px, auto, auto;
+}
+
+.map-zone {
+  border-radius: 14px;
+  border: 1px solid rgba(148,163,184,.16);
+  box-shadow: 0 12px 30px rgba(0,0,0,.20);
+  backdrop-filter: blur(8px);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.map-zone:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: rgba(124,92,255,.40);
+  box-shadow: 0 18px 38px rgba(0,0,0,.28);
+}
+
+.map-title {
+  font-weight: 800;
+  letter-spacing: -.2px;
+}
+
+.map-legend {
+  border-top-color: rgba(148,163,184,.10);
+}
+
+/* ---------- ALERTS ---------- */
+.alerts-summary {
+  gap: 14px;
+}
+
+.alert-summary-card {
+  border-radius: var(--ep-radius-md);
+  background: linear-gradient(145deg, rgba(20,28,47,.90), rgba(10,16,29,.96));
+}
+
+.alert-item {
+  border-radius: 14px;
+  background: rgba(255,255,255,.025);
+}
+
+.alert-item:hover {
+  transform: translateY(-2px);
+  background: rgba(124,92,255,.035);
+}
+
+.alert-icon,
+.warning-icon,
+.zone-icon,
+.twin-ai-icon {
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+
+.priority.high {
+  box-shadow: 0 0 0 1px rgba(251,113,133,.08);
+}
+
+/* ---------- EMERGENCY ---------- */
+.emergency-page {
+  background: radial-gradient(circle at 95% 0%, rgba(239,68,68,.055), transparent 28%);
+}
+
+.emergency-card {
+  border-radius: var(--ep-radius-lg);
+  background: linear-gradient(145deg, rgba(31,22,34,.94), rgba(13,17,29,.97));
+}
+
+.emergency-warning {
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+}
+
+.emergency button,
+.emergency-card button {
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+/* ---------- ANALYTICS ---------- */
+.analytics-cards {
+  gap: 14px;
+}
+
+.analytics-card {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: var(--ep-radius-md);
+  background: linear-gradient(145deg, rgba(19,27,46,.90), rgba(10,16,29,.96));
+}
+
+.analytics-card h2 {
+  font-size: 27px;
+  letter-spacing: -.8px;
+}
+
+.analytics-panel {
+  border-radius: var(--ep-radius-lg);
+  background: linear-gradient(145deg, rgba(16,24,42,.88), rgba(9,15,28,.94));
+}
+
+.chart {
+  border-radius: 12px;
+  background: rgba(255,255,255,.018);
+}
+
+.bar {
+  border-radius: 7px 7px 3px 3px;
+  transition: filter .2s ease, transform .2s ease;
+}
+
+.bar:hover {
+  filter: brightness(1.18);
+  transform: scaleY(1.025);
+  transform-origin: bottom;
+}
+
+.venue-row {
+  border-color: rgba(148,163,184,.09);
+  transition: background .2s ease, padding .2s ease;
+}
+
+.venue-row:hover {
+  background: rgba(124,92,255,.035);
+}
+
+/* ---------- SETTINGS ---------- */
+.settings-grid {
+  gap: 16px;
+}
+
+.settings-card {
+  border-radius: var(--ep-radius-lg);
+  background: linear-gradient(145deg, rgba(18,26,45,.90), rgba(10,16,29,.95));
+}
+
+.setting-row {
+  min-height: 62px;
+  border-radius: 11px;
+  border-color: rgba(148,163,184,.08);
+}
+
+.setting-row:hover {
+  background: rgba(124,92,255,.035);
+}
+
+.security-status {
+  border-radius: 11px;
+  background: rgba(52,211,153,.055);
+}
+
+/* ---------- LOGIN / SIGNUP ---------- */
+.login-page {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(124,92,255,.17), transparent 32%),
+    radial-gradient(circle at 0% 100%, rgba(34,211,238,.08), transparent 28%),
+    #070b16;
+}
+
+.login-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, black, transparent 75%);
+}
+
+.login-box {
+  width: 460px;
+  padding: 40px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, rgba(20,28,49,.94), rgba(9,14,27,.97));
+  border-color: rgba(148,163,184,.14);
+  box-shadow: 0 35px 100px rgba(0,0,0,.52), 0 0 70px rgba(92,72,210,.08);
+}
+
+.login-logo .college-logo {
+  width: 68px;
+  height: 68px;
+  border-radius: 15px;
+}
+
+.login-brand h1 {
+  font-size: 30px;
+}
+
+.login-brand h1 span {
+  color: transparent;
+  background: linear-gradient(90deg, #9a8cff, #39d9ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.login-form label {
+  color: #aeb9cf;
+  font-size: 11px;
+  letter-spacing: .2px;
+}
+
+.login-form input,
+.input {
+  height: 48px;
+  border-radius: 11px;
+  background: rgba(4,9,20,.62);
+  border: 1px solid rgba(148,163,184,.15);
+  color: #f8fafc;
+}
+
+.login-form input:hover,
+.input:hover {
+  border-color: rgba(124,92,255,.35);
+}
+
+.login-form input:focus,
+.input:focus {
+  border-color: #7c5cff;
+  box-shadow: 0 0 0 3px rgba(124,92,255,.10), 0 10px 25px rgba(0,0,0,.12);
+}
+
+.login-button,
+.register-btn {
+  height: 50px;
+  border-radius: 11px;
+  font-size: 11px;
+  letter-spacing: .7px;
+}
+
+.role-selection button {
+  border: 1px solid rgba(124,92,255,.20);
+  border-radius: 12px;
+  background: rgba(255,255,255,.035);
+  color: #c5cde0;
+}
+
+.role-selection button:hover {
+  background: linear-gradient(135deg, rgba(124,92,255,.22), rgba(34,211,238,.09));
+  border-color: rgba(124,92,255,.48);
+  color: white;
+}
+
+.selected-role {
+  background: rgba(124,92,255,.10);
+  border: 1px solid rgba(124,92,255,.22);
+  color: #b9aeff;
+}
+
+/* ---------- PUBLIC / PARTICIPANT EXPERIENCE ---------- */
+.public-home {
+  max-width: 1440px;
+  padding: 26px 42px 38px;
+  background:
+    radial-gradient(circle at 85% 8%, rgba(124,58,237,.10), transparent 24%),
+    radial-gradient(circle at 0% 80%, rgba(6,182,212,.07), transparent 25%),
+    #f7f8fc;
+}
+
+.public-header h1 {
+  letter-spacing: -1px;
+}
+
+.public-badge {
+  border: 1px solid #e0dcff;
+  box-shadow: 0 8px 20px rgba(85,70,170,.06);
+}
+
+.public-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+  padding: 58px 54px;
+  border-color: #e6e3f2;
+  box-shadow: 0 22px 60px rgba(50,45,100,.08);
+}
+
+.public-hero::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -110px;
+  top: -120px;
+  border-radius: 50%;
+  border: 1px solid rgba(102,87,232,.14);
+  box-shadow: 0 0 0 35px rgba(102,87,232,.035), 0 0 0 70px rgba(102,87,232,.02);
+  pointer-events: none;
+}
+
+.public-hero h2 {
+  max-width: 760px;
+  letter-spacing: -1.8px;
+}
+
+.public-event-card {
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 12px 35px rgba(40,45,80,.055);
+}
+
+.public-event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 50px rgba(70,60,150,.11);
+}
+
+.public-event-card button {
+  border-radius: 11px;
+  box-shadow: 0 9px 22px rgba(102,87,232,.16);
+}
+
+/* ---------- ANNOUNCEMENT ---------- */
+.announcement-toast {
+  border: 1px solid rgba(255,255,255,.14);
+  background: linear-gradient(135deg, #6548df, #16bfe4);
+  box-shadow: 0 18px 45px rgba(30,30,70,.28);
+  backdrop-filter: blur(14px);
+}
+
+/* ---------- BREAKING TICKER ---------- */
+.breaking-ticker {
+  border: 1px solid rgba(239,68,68,.20);
+  box-shadow: 0 10px 30px rgba(30,35,70,.08);
+}
+
+.ticker-event {
+  transition: background .2s ease, color .2s ease;
+}
+
+.ticker-event:hover {
+  background: rgba(255,255,255,.045);
+}
+
+/* ---------- MOTION ---------- */
+@keyframes epFadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-header,
+.event-title,
+.health-card,
+.stat-card,
+.ai-copilot-card,
+.ai-copilot,
+.analytics-card,
+.analytics-panel,
+.alert-item,
+.emergency-card,
+.settings-card,
+.public-event-card {
+  animation: epFadeUp .45s ease both;
+}
+
+.stats-grid .stat-card:nth-child(2),
+.analytics-cards .analytics-card:nth-child(2) { animation-delay: .04s; }
+.stats-grid .stat-card:nth-child(3),
+.analytics-cards .analytics-card:nth-child(3) { animation-delay: .08s; }
+.stats-grid .stat-card:nth-child(4),
+.analytics-cards .analytics-card:nth-child(4) { animation-delay: .12s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- RESPONSIVE FINAL PASS ---------- */
+@media (max-width: 1100px) {
+  .sidebar { width: 220px; }
+  .main-content { margin-left: 220px; }
+  .dashboard-header { padding-left: 28px; padding-right: 28px; }
+  .event-title, .health-card, .stats-grid, .dashboard-bottom, .ai-copilot-card { margin-left: 28px; margin-right: 28px; }
+  .twin-page, .alerts-page, .emergency-page, .analytics-page, .settings-page { padding-left: 28px; padding-right: 28px; }
+}
+
+@media (max-width: 850px) {
+  .sidebar { width: 72px; padding-left: 8px; padding-right: 8px; }
+  .main-content { margin-left: 72px; }
+  .side-logo { justify-content: center; padding-left: 0; padding-right: 0; }
+  .side-logo h2, .side-logo small { display: none; }
+  .sidebar nav a, .side-bottom a { justify-content: center; padding: 11px 8px; font-size: 0; }
+  .sidebar nav a.active::before { left: -8px; }
+  .status { text-align: center; font-size: 0; padding-left: 0; padding-right: 0; }
+  .status span { margin-right: 0; font-size: 11px; }
+}
+
+@media (max-width: 650px) {
+  .dashboard-header { padding: 22px 18px 14px; align-items: flex-start; gap: 16px; }
+  .dashboard-header h1 { font-size: 23px; }
+  .organizer { padding-right: 7px; }
+  .organizer strong, .organizer small { display: none; }
+  .event-title, .health-card, .stats-grid, .dashboard-bottom, .ai-copilot-card { margin-left: 18px; margin-right: 18px; }
+  .event-title { padding: 20px; }
+  .event-title h2 { font-size: 20px; }
+  .health-card { padding: 20px; }
+  .health-card h2 { font-size: 34px; }
+  .twin-page, .alerts-page, .emergency-page, .analytics-page, .settings-page { padding: 22px 18px; }
+  .venue-map { min-height: 620px; }
+  .public-home { padding: 20px; }
+  .public-header { padding-top: 58px; }
+  .public-hero { padding: 36px 25px; }
+  .public-hero h2 { font-size: 35px; letter-spacing: -1.2px; }
+}
+
+@media (max-width: 520px) {
+  .main-content { margin-left: 60px; }
+  .sidebar { width: 60px; }
+  .login-box { padding: 30px 22px; border-radius: 18px; }
+  .login-logo { margin-bottom: 25px; }
+  .login-brand h1 { font-size: 26px; }
+  .public-header h1 { font-size: 26px; }
+  .public-hero h2 { font-size: 31px; }
+  .breaking-label { padding: 0 12px; }
+}
+
+/* =========================================================
+   EVENTPULSE AI — PREMIUM HACKATHON APP UI
+   FINAL POLISH LAYER
+   ---------------------------------------------------------
+   Protected: QR Entry, Announce Event, Login / Signup
+   Improved: Dashboard, Discover, Registration, Digital Pass,
+             Check-in, Digital Event Twin, AI Alerts,
+             Emergency Mode, Analytics
+   ========================================================= */
+
+/* APP SHELL — only dashboard/inner application screens */
+.app-layout {
+  background:
+    radial-gradient(circle at 78% 8%, rgba(91,92,255,.10), transparent 26%),
+    radial-gradient(circle at 35% 100%, rgba(0,212,255,.055), transparent 28%),
+    #080b14;
+}
+
+.app-layout .main-content {
+  background: transparent;
+}
+
+/* PREMIUM SIDEBAR */
+.app-layout .sidebar {
+  background: linear-gradient(180deg, #0d1220 0%, #090d18 100%);
+  border-right: 1px solid rgba(255,255,255,.09);
+  box-shadow: 16px 0 45px rgba(0,0,0,.24);
+}
+
+.app-layout .side-logo {
+  border-bottom-color: rgba(255,255,255,.10);
+}
+
+.app-layout .side-logo h2 {
+  color: #f8fafc;
+}
+
+.app-layout .side-logo small {
+  color: #8791aa;
+}
+
+.app-layout .sidebar nav a,
+.app-layout .side-bottom a {
+  color: #aab4c8;
+  border: 1px solid transparent;
+}
+
+.app-layout .sidebar nav a:hover,
+.app-layout .side-bottom a:hover {
+  color: #ffffff;
+  background: rgba(255,255,255,.065);
+  border-color: rgba(255,255,255,.07);
+  transform: translateX(3px);
+}
+
+.app-layout .sidebar nav a.active {
+  color: #ffffff;
+  background: linear-gradient(90deg, rgba(99,102,241,.24), rgba(34,211,238,.08));
+  border-color: rgba(129,140,248,.25);
+  box-shadow: inset 0 0 24px rgba(99,102,241,.07), 0 8px 25px rgba(0,0,0,.18);
+}
+
+.app-layout .sidebar nav a.active::before {
+  left: -15px;
+  width: 3px;
+  background: linear-gradient(180deg,#8b7cff,#22d3ee);
+  box-shadow: 0 0 14px rgba(34,211,238,.55);
+}
+
+.app-layout .status {
+  color: #8d98ae;
+}
+
+/* COMMON INNER-PAGE TYPOGRAPHY */
+.app-layout .dashboard-header h1,
+.app-layout .dashboard-header h2,
+.app-layout .dashboard-header h3,
+.app-layout .card h1,
+.app-layout .card h2,
+.app-layout .card h3,
+.app-layout .card h4,
+.app-layout .stat-card h2,
+.app-layout .stat-card h3,
+.app-layout .analytics-card h2,
+.app-layout .analytics-card h3,
+.app-layout .emergency-card h2,
+.app-layout .emergency-card h3,
+.app-layout .twin-header h1,
+.app-layout .twin-header h2 {
+  color: #f8fafc;
+}
+
+.app-layout .dashboard-header p,
+.app-layout .card p,
+.app-layout .stat-card p,
+.app-layout .analytics-card p,
+.app-layout .emergency-card p,
+.app-layout .twin-header p {
+  color: #a8b2c7;
+}
+
+/* PREMIUM CARD SYSTEM */
+.app-layout .card,
+.app-layout .stat-card,
+.app-layout .ai-alert-card,
+.app-layout .analytics-card,
+.app-layout .analytics-panel,
+.app-layout .emergency-card,
+.app-layout .alert-summary-card,
+.app-layout .setting-row,
+.app-layout .twin-ai {
+  background: linear-gradient(145deg, #151b2b 0%, #0e1421 100%);
+  border: 1px solid rgba(255,255,255,.095);
+  box-shadow: 0 18px 45px rgba(0,0,0,.20);
+}
+
+.app-layout .card:hover,
+.app-layout .stat-card:hover,
+.app-layout .analytics-card:hover,
+.app-layout .emergency-card:hover {
+  border-color: rgba(129,140,248,.28);
+  box-shadow: 0 22px 55px rgba(0,0,0,.28), 0 0 30px rgba(99,102,241,.055);
+  transform: translateY(-2px);
+}
+
+/* DASHBOARD HEADER */
+.app-layout .dashboard-header {
+  padding-top: 34px;
+}
+
+.app-layout .dashboard-header h1 {
+  font-size: 31px;
+  letter-spacing: -.9px;
+}
+
+.app-layout .dashboard-header p {
+  color: #9ca8bd;
+}
+
+.app-layout .organizer {
+  background: #111827;
+  border-color: rgba(255,255,255,.10);
+}
+
+.app-layout .organizer strong {
+  color: #f8fafc;
+}
+
+.app-layout .organizer small {
+  color: #9aa6bc;
+}
+
+/* EVENT HERO */
+.app-layout .event-title {
+  background:
+    linear-gradient(135deg, rgba(30,35,67,.96), rgba(13,19,33,.98));
+  border-color: rgba(129,140,248,.22);
+  box-shadow: 0 20px 55px rgba(0,0,0,.24);
+}
+
+.app-layout .event-title p {
+  color: #9b8cff;
+}
+
+.app-layout .event-title h2 {
+  color: #ffffff;
+}
+
+.app-layout .event-title span {
+  color: #a6b0c5;
+}
+
+.app-layout .live {
+  color: #5ee7ad;
+  background: rgba(34,197,94,.10);
+  border-color: rgba(74,222,128,.25);
+}
+
+/* HEALTH */
+.app-layout .health-card {
+  background: linear-gradient(135deg, #171c38 0%, #101827 100%);
+  border-color: rgba(129,140,248,.24);
+}
+
+.app-layout .health-card p {
+  color: #aab5ca;
+}
+
+.app-layout .health-card h2 {
+  color: #ffffff;
+}
+
+.app-layout .health-card span {
+  color: #a2aec2;
+}
+
+/* STATS */
+.app-layout .stats-grid {
+  gap: 16px;
+}
+
+.app-layout .stat-card {
+  min-height: 125px;
+  padding: 20px;
+}
+
+.app-layout .stat-card p {
+  color: #aab4c8;
+  font-weight: 600;
+}
+
+.app-layout .stat-card h2,
+.app-layout .stat-card h3 {
+  color: #ffffff;
+}
+
+.app-layout .stat-icon {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.055);
+  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+}
+
+/* AI ALERTS */
+.app-layout .ai-alert-card,
+.app-layout .alerts-page .card,
+.app-layout .alert-summary-card {
+  border-color: rgba(251,191,36,.16);
+}
+
+.app-layout .ai-alert-card h2,
+.app-layout .ai-alert-card h3,
+.app-layout .alerts-page h1,
+.app-layout .alerts-page h2,
+.app-layout .alerts-page h3 {
+  color: #ffffff;
+}
+
+.app-layout .ai-alert-card p,
+.app-layout .alert-item p,
+.app-layout .alerts-page p {
+  color: #aeb8cb;
+}
+
+.app-layout .alert-item {
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 14px;
+}
+
+.app-layout .alert-item strong {
+  color: #f8fafc;
+}
+
+.app-layout .alerts-summary {
+  gap: 14px;
+}
+
+.app-layout .alert-summary-card strong,
+.app-layout .alert-summary-card span {
+  color: #ffffff;
+}
+
+/* AI COPILOT — stronger readability */
+.app-layout .ai-copilot {
+  background: linear-gradient(135deg, #171c3a 0%, #101827 55%, #0d1624 100%);
+  border: 1px solid rgba(129,140,248,.24);
+  box-shadow: 0 22px 55px rgba(0,0,0,.25);
+}
+
+.app-layout .ai-copilot h2,
+.app-layout .ai-copilot h3,
+.app-layout .ai-copilot strong {
+  color: #ffffff !important;
+}
+
+.app-layout .ai-copilot p,
+.app-layout .ai-copilot span,
+.app-layout .ai-copilot small {
+  color: #b6c0d4 !important;
+}
+
+.app-layout .ai-copilot button {
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+
+/* DIGITAL EVENT TWIN */
+.app-layout .twin-page {
+  color: #f8fafc;
+}
+
+.app-layout .twin-header {
+  color: #ffffff;
+}
+
+.app-layout .twin-label {
+  color: #a9b4c8;
+}
+
+.app-layout .twin-ai {
+  background: linear-gradient(135deg,#151b2d,#101827);
+  border-color: rgba(34,211,238,.18);
+}
+
+.app-layout .twin-ai h3,
+.app-layout .twin-ai strong {
+  color: #ffffff;
+}
+
+.app-layout .twin-ai p,
+.app-layout .twin-ai span {
+  color: #aeb8ca;
+}
+
+.app-layout .venue-map {
+  background:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+    #0d1420;
+  background-size: 28px 28px;
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: inset 0 0 60px rgba(0,0,0,.25), 0 20px 50px rgba(0,0,0,.20);
+}
+
+.app-layout .map-zone {
+  background: rgba(22,29,45,.92);
+  border: 1px solid rgba(129,140,248,.30);
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(0,0,0,.20);
+}
+
+.app-layout .map-zone:hover {
+  background: rgba(42,51,77,.98);
+  border-color: rgba(34,211,238,.50);
+}
+
+.app-layout .map-title,
+.app-layout .map-legend {
+  color: #dbe4f5;
+}
+
+.app-layout .legend-items,
+.app-layout .legend-items span {
+  color: #aab5c9;
+}
+
+/* ANALYTICS */
+.app-layout .analytics-page {
+  color: #f8fafc;
+}
+
+.app-layout .analytics-page h1,
+.app-layout .analytics-page h2,
+.app-layout .analytics-page h3 {
+  color: #ffffff;
+}
+
+.app-layout .analytics-page p,
+.app-layout .analytics-page span,
+.app-layout .venue-row span {
+  color: #aab5c9;
+}
+
+.app-layout .analytics-cards {
+  gap: 16px;
+}
+
+.app-layout .analytics-card {
+  min-height: 120px;
+}
+
+.app-layout .analytics-card strong,
+.app-layout .analytics-card b {
+  color: #ffffff;
+}
+
+.app-layout .chart {
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 16px;
+}
+
+.app-layout .bar {
+  box-shadow: 0 0 16px rgba(99,102,241,.22);
+}
+
+.app-layout .venue-row {
+  border-bottom-color: rgba(255,255,255,.075);
+}
+
+/* EMERGENCY MODE — clear high-risk hierarchy */
+.app-layout .emergency-page {
+  color: #f8fafc;
+}
+
+.app-layout .emergency-card {
+  background: linear-gradient(145deg,#19151d,#11151f);
+}
+
+.app-layout .emergency-card h1,
+.app-layout .emergency-card h2,
+.app-layout .emergency-card h3 {
+  color: #ffffff;
+}
+
+.app-layout .emergency-card p,
+.app-layout .emergency-card span {
+  color: #b2bbcc;
+}
+
+.app-layout .emergency-warning {
+  background: rgba(239,68,68,.10);
+  border: 1px solid rgba(248,113,113,.28);
+  color: #fecaca;
+}
+
+.app-layout .emergency-status {
+  color: #ffffff;
+  background: rgba(34,197,94,.09);
+  border-color: rgba(74,222,128,.22);
+}
+
+.app-layout .emergency-grid {
+  gap: 16px;
+}
+
+/* REGISTRATION / DIGITAL PASS / CHECK-IN — shared readable controls */
+.app-layout .registration-page,
+.app-layout .digital-pass-page,
+.app-layout .checkin-page {
+  color: #f8fafc;
+}
+
+.app-layout .registration-page h1,
+.app-layout .registration-page h2,
+.app-layout .registration-page h3,
+.app-layout .digital-pass-page h1,
+.app-layout .digital-pass-page h2,
+.app-layout .digital-pass-page h3,
+.app-layout .checkin-page h1,
+.app-layout .checkin-page h2,
+.app-layout .checkin-page h3 {
+  color: #ffffff;
+}
+
+.app-layout .registration-page p,
+.app-layout .registration-page span,
+.app-layout .digital-pass-page p,
+.app-layout .digital-pass-page span,
+.app-layout .checkin-page p,
+.app-layout .checkin-page span {
+  color: #aeb8cb;
+}
+
+.app-layout .registration-page input,
+.app-layout .registration-page select,
+.app-layout .registration-page textarea,
+.app-layout .digital-pass-page input,
+.app-layout .checkin-page input {
+  color: #f8fafc;
+  background: #0b111d;
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.app-layout .registration-page input::placeholder,
+.app-layout .checkin-page input::placeholder {
+  color: #68748c;
+}
+
+.app-layout .registration-page input:focus,
+.app-layout .registration-page select:focus,
+.app-layout .registration-page textarea:focus,
+.app-layout .checkin-page input:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(129,140,248,.12);
+  outline: none;
+}
+
+/* BUTTON HIERARCHY FOR INNER APP ONLY */
+.app-layout .card button,
+.app-layout .registration-page button,
+.app-layout .digital-pass-page button,
+.app-layout .checkin-page button,
+.app-layout .analytics-page button,
+.app-layout .twin-page button,
+.app-layout .alerts-page button,
+.app-layout .emergency-page button {
+  border-radius: 10px;
+  font-weight: 700;
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.app-layout .card button:hover,
+.app-layout .registration-page button:hover,
+.app-layout .digital-pass-page button:hover,
+.app-layout .checkin-page button:hover,
+.app-layout .analytics-page button:hover,
+.app-layout .twin-page button:hover,
+.app-layout .alerts-page button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+/* SETTINGS */
+.app-layout .settings-page h1,
+.app-layout .settings-page h2,
+.app-layout .settings-page h3 {
+  color: #ffffff;
+}
+
+.app-layout .settings-page p,
+.app-layout .settings-page span,
+.app-layout .setting-row label {
+  color: #aeb8cb;
+}
+
+.app-layout .setting-row {
+  background: #111827;
+  border-color: rgba(255,255,255,.085);
+}
+
+.app-layout .security-status {
+  color: #86efac;
+}
+
+/* CLEAN RESPONSIVE PRESENTATION */
+@media (max-width: 900px) {
+  .app-layout .main-content {
+    margin-left: 0;
+  }
+
+  .app-layout .sidebar {
+    width: 220px;
+  }
+
+  .app-layout .dashboard-header,
+  .app-layout .event-title,
+  .app-layout .health-card {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .app-layout .dashboard-header {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-layout .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .app-layout .dashboard-header,
+  .app-layout .event-title,
+  .app-layout .health-card {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .app-layout .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .app-layout .event-title,
+  .app-layout .health-card {
+    padding: 20px;
+  }
+}
+
+/* =========================================================
+   PROTECTION — DO NOT TOUCH THESE EXISTING PAGES
+   QR ENTRY / ANNOUNCE EVENT / LOGIN / SIGNUP
+   No global login, input, public-page or QR selectors are used
+   in this polish layer.
+   ========================================================= */

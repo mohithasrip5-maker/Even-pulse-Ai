@@ -621,7 +621,28 @@ const [selectedEvent, setSelectedEvent] = useState(null);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-const [loginRole, setLoginRole] = useState("");
+  const [participantId, setParticipantId] = useState("");
+  const [attendanceData, setAttendanceData] = useState([]);
+  useEffect(() => {
+  const loadAttendance = async () => {
+    if (!participantId) return;
+
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/attendance/${participantId}`
+      );
+
+      if (response.data.success) {
+        setAttendanceData(response.data.attendance);
+      }
+    } catch (error) {
+      console.log("Attendance loading error:", error);
+    }
+  };
+
+  loadAttendance();
+}, [participantId]); 
+  const [loginRole, setLoginRole] = useState("");
   const [name, setName] = useState("");
   const [confirmPassword, setConfirmPassword] =
     useState("");
@@ -692,7 +713,7 @@ const [announcementMessage, setAnnouncementMessage] =
      LOGIN
   ========================================================= */
 
- const handleLogin = () => {
+ const handleLogin = async () => {
 
   if (!email || !password) {
     alert("Please enter Email and Password");
@@ -704,14 +725,51 @@ const [announcementMessage, setAnnouncementMessage] =
     return;
   }
 
+  // ORGANIZER LOGIN
   if (loginRole === "organizer") {
-    setPage("dashboard");
+
+    if (
+      email === "organizer@eventpulse.ai" &&
+      password === "admin123"
+    ) {
+      setPage("dashboard");
+      return;
+    }
+
+    alert("Invalid organizer email or password");
     return;
   }
 
+  // PARTICIPANT LOGIN
   if (loginRole === "participant") {
-    setPage("participant-home");
-    return;
+
+    try {
+
+      const response = await axios.get(
+        `http://localhost:5000/api/participants/email/${email}`
+      );
+
+      if (response.data.success) {
+
+        const participant = response.data.participant;
+
+        if (participant.email === email) {
+          setParticipantId(participant.participantId);
+          setPage("participant-home");
+          return;
+        }
+      }
+
+      alert("Participant not found");
+
+    } catch (error) {
+
+      alert(
+        error.response?.data?.message ||
+        "Participant login failed"
+      );
+
+    }
   }
 };
   /* =========================================================
@@ -980,7 +1038,20 @@ const announceEvent = async () => {
               >
                 📱 Check-in
               </a>
+              {/* MY ATTENDANCE */}
 
+<a
+  className={
+    page === "attendance"
+      ? "active"
+      : ""
+  }
+  onClick={() =>
+    setPage("attendance")
+  }
+>
+  📊 My Attendance
+</a>
               {/* DIGITAL EVENT TWIN */}
 
               <a
@@ -1372,13 +1443,15 @@ const announceEvent = async () => {
           selectedEvent={selectedEvent}
             onLogin={() => setPage("login")}
             onRegistered={(participant) => {
-            
-              console.log(
-                "Registered:",
-                participant
-              );
 
-            }}
+            console.log(
+            "Registered:",
+           participant
+  );
+
+  setParticipantId(participant.participantId);
+
+}}
           />
 
         )}
@@ -1405,7 +1478,41 @@ const announceEvent = async () => {
         {page === "checkin" && (
           <CheckIn />
         )}
+        
+        {/* ===================================================
+    MY ATTENDANCE
+=================================================== */}
 
+{page === "attendance" && (
+  <div className="attendance-page">
+    <h2>📊 My Attendance</h2>
+
+    <p>Participant ID: {participantId || "Not available"}</p>
+
+    <p>Track your event participation and check-in status.</p>
+
+    <div className="attendance-card">
+      <h3>Event Attendance</h3>
+
+      {attendanceData.length === 0 ? (
+        <p>No attendance record found yet.</p>
+      ) : (
+        attendanceData.map((attendance, index) => (
+          <div key={attendance._id || index}>
+            <p>
+              <strong>Status:</strong> {attendance.status}
+            </p>
+
+            <p>
+              <strong>Check-in Time:</strong>{" "}
+              {new Date(attendance.checkInTime).toLocaleString()}
+            </p>
+          </div>
+        ))
+      )}
+    </div>
+  </div>
+)}
         {/* ===================================================
             DASHBOARD
         =================================================== */}
@@ -1419,19 +1526,12 @@ const announceEvent = async () => {
 
         )}{page === "event-qr" && (
   <EventEntryQR />
-)}{page === "public" && (
-  <button
-    className="event-qr-btn"
-    onClick={() => setPage("event-qr")}
-  >
-    📱 EVENT ENTRY QR
-  </button>
 )}
 {page === "public" && (
   <PublicHome
     onViewEvent={(event) => {
       setSelectedEvent(event);
-      setPage("");
+      setPage("login");
     }}
   />
 )}

@@ -11,14 +11,20 @@ function EventEntryQR() {
         Scan this QR code to open the EventPulse event website.
       </p>
 
-      <QRCodeCanvas
-        value={websiteURL}
-        size={260}
-        bgColor="#ffffff"
-        fgColor="#111827"
-        level="H"
-      />
-
+      <a
+  href={websiteURL}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="event-qr-link"
+>
+  <QRCodeCanvas
+    value={websiteURL}
+    size={260}
+    bgColor="#ffffff"
+    fgColor="#111827"
+    level="H"
+  />
+</a>
       <p className="qr-url">{websiteURL}</p>
     </div>
   );
