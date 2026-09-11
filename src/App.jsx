@@ -20,32 +20,7 @@ function DashboardLive({ setPage, announceEvent }) {
     crowdPercentage: 0,
     riskLevel: "SAFE",
   });
-const submitFeedback = async () => {
-  if (!feedbackRating) {
-    alert("Please select a star rating ⭐");
-    return;
-  }
 
-  try {
-    const response = await axios.post(
-      "https://event-pulse-ai-backend.onrender.com/api/feedback",
-      {
-        eventId: "EVT001",
-        participantId: participantId,
-        rating: feedbackRating,
-        comment: feedbackComment
-      }
-    );
-
-    if (response.data.success) {
-      setFeedbackSubmitted(true);
-      alert(`⭐ Overall Rating: ${feedbackRating}/5\n✅ Feedback saved successfully!`);
-    }
-  } catch (error) {
-    console.log("Feedback Error:", error);
-    alert("Feedback submission failed");
-  }
-};
   const [aiAlert, setAiAlert] = useState(null);
   const [copilotData, setCopilotData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -629,14 +604,12 @@ const submitFeedback = async () => {
 ========================================================= */
 
 function App() {
-  
-
-const [page, setPage] = useState(
-  new URLSearchParams(window.location.search).get("entry") === "1"
-    ? "public"
-    : "event-qr"
-);
-const [selectedEvent, setSelectedEvent] = useState(null);
+  const [page, setPage] = useState(
+    new URLSearchParams(window.location.search).get("entry") === "1"
+      ? "public"
+      : "event-qr"
+  );
+  const [selectedEvent, setSelectedEvent] = useState(null);
   const [liveData, setLiveData] = useState({
     currentAttendance: 0,
     capacity: 500,
@@ -916,6 +889,37 @@ if (loginRole === "participant") {
   const [feedbackRating, setFeedbackRating] = useState(0);
 const [feedbackComment, setFeedbackComment] = useState("");
 const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+const submitFeedback = async () => {
+  if (!feedbackRating) {
+    alert("Please select a star rating ⭐");
+    return;
+  }
+
+  try {
+    const response = await axios.post(
+      "https://event-pulse-ai-backend.onrender.com/api/feedback",
+      {
+        eventId: "EVT001",
+        participantId,
+        rating: feedbackRating,
+        comment: feedbackComment,
+      }
+    );
+
+    if (response.data.success) {
+      setFeedbackSubmitted(true);
+
+      alert(
+        `⭐ Overall Rating: ${feedbackRating}/5\n✅ Feedback saved successfully!`
+      );
+    } else {
+      alert("Feedback could not be saved");
+    }
+  } catch (error) {
+    console.log("Feedback Error:", error);
+    alert("Feedback submission failed");
+  }
+};
 const announceEvent = async () => {
   try {
     const response = await axios.post(
@@ -1032,64 +1036,11 @@ const announceEvent = async () => {
 >
   🔎 Discover Events
 </a>
-              {/* REGISTRATION */}
+              
 
-              <a
-                className={
-                  page === "registration"
-                    ? "active"
-                    : ""
-                }
-                onClick={() =>
-                  setPage("registration")
-                }
-              >
-                📝 Registration
-              </a>
-
-              {/* DIGITAL PASS */}
-
-              <a
-                className={
-                  page === "digitalpass"
-                    ? "active"
-                    : ""
-                }
-                onClick={() =>
-                  setPage("digitalpass")
-                }
-              >
-                🎫 Digital Pass
-              </a>
-
-              {/* CHECK-IN */}
-
-              <a
-                className={
-                  page === "checkin"
-                    ? "active"
-                    : ""
-                }
-                onClick={() =>
-                  setPage("checkin")
-                }
-              >
-                📱 Check-in
-              </a>
-              {/* MY ATTENDANCE */}
-
-<a
-  className={
-    page === "attendance"
-      ? "active"
-      : ""
-  }
-  onClick={() =>
-    setPage("attendance")
-  }
->
-  📊 My Attendance
-</a>
+              
+              
+              
               {/* DIGITAL EVENT TWIN */}
 
               <a
