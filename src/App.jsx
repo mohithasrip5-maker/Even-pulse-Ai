@@ -1617,7 +1617,28 @@ const announceEvent = async () => {
   CHECK IN →
 </button>
         </div>
+<div className="participant-feature-card">
+  <div className="feature-icon">💬</div>
+  <h3>Event Feedback</h3>
+  <p>Share your experience and help us improve future events.</p>
+  <button
+  onClick={() => {
+    const rating = window.prompt(
+      "Rate your EventPulse AI experience (1-5):"
+    );
 
+    if (!rating) return;
+
+    const comment = window.prompt(
+      "Any feedback for the event?"
+    );
+
+    alert("✅ Feedback submitted successfully!");
+  }}
+>
+  GIVE FEEDBACK →
+</button>
+</div>
 
         <div className="participant-feature-card">
           <div className="feature-icon">📊</div>
@@ -1635,9 +1656,184 @@ const announceEvent = async () => {
           <h3>My Certificate</h3>
           <p>Get your certificate after completing the event.</p>
 
-          <button className="coming-soon-btn">
-            CERTIFICATE
+          <button
+  onClick={() => {
+    const certificateId = "MJC-2026-" + participantId;
+
+    const certificateWindow = window.open("", "_blank");
+
+    certificateWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>EventPulse AI Certificate</title>
+        <style>
+          body {
+            margin: 0;
+            background: #f1f5f9;
+            font-family: Georgia, serif;
+          }
+
+          .certificate {
+            width: 900px;
+            min-height: 600px;
+            margin: 40px auto;
+            background: white;
+            border: 12px solid #1e3a8a;
+            padding: 50px;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+          }
+
+          .inner {
+            border: 3px solid #d4af37;
+            min-height: 490px;
+            padding: 35px;
+            box-sizing: border-box;
+          }
+
+          .logo {
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e3a8a;
+            letter-spacing: 2px;
+          }
+
+          h1 {
+            font-size: 48px;
+            color: #1e3a8a;
+            margin: 25px 0 10px;
+          }
+
+          .subtitle {
+            font-size: 20px;
+            color: #555;
+          }
+
+          .name {
+            font-size: 38px;
+            font-weight: bold;
+            color: #111827;
+            margin: 30px 0;
+          }
+
+          .event {
+            font-size: 25px;
+            font-weight: bold;
+            color: #1e3a8a;
+          }
+
+          .description {
+            font-size: 18px;
+            color: #444;
+            margin: 25px;
+          }
+
+          .id {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            color: #666;
+            margin-top: 35px;
+          }
+
+          .actions {
+            text-align: center;
+            margin: 20px;
+          }
+
+          button {
+            padding: 12px 25px;
+            margin: 5px;
+            border: none;
+            border-radius: 8px;
+            background: #1e3a8a;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+          }
+
+          @media print {
+            body {
+              background: white;
+            }
+
+            .certificate {
+              margin: 0;
+              width: 100%;
+              border: 10px solid #1e3a8a;
+            }
+
+            .actions {
+              display: none;
+            }
+          }
+        </style>
+      </head>
+
+      <body>
+
+        <div class="certificate">
+          <div class="inner">
+
+            <div class="logo">
+              EVENTPULSE AI
+            </div>
+
+            <h1>CERTIFICATE</h1>
+
+            <div class="subtitle">
+              OF PARTICIPATION
+            </div>
+
+            <div class="description">
+              This certificate is proudly presented to
+            </div>
+
+            <div class="name">
+              Mohitha Sri. P
+            </div>
+
+            <div class="description">
+              for successfully participating in
+            </div>
+
+            <div class="event">
+              MJC TECHFEST 2026
+            </div>
+
+            <div class="description">
+              and being a part of this event powered by
+              EventPulse AI.
+            </div>
+
+            <div class="id">
+              Certificate ID: ${certificateId}
+            </div>
+
+          </div>
+        </div>
+
+        <div class="actions">
+          <button onclick="window.print()">
+            🖨️ Download / Print Certificate
           </button>
+
+          <button onclick="window.close()">
+            Close
+          </button>
+        </div>
+
+      </body>
+      </html>
+    `);
+
+    certificateWindow.document.close();
+  }}
+>
+  GENERATE E-CERTIFICATE
+</button>
         </div>
 
       </div>
