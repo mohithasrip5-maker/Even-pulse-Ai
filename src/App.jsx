@@ -1714,7 +1714,7 @@ const announceEvent = async () => {
 
           <button onClick={() => setPage("attendance")}>
           VIEW ATTENDANCE →
-          </button>
+</button>
         </div>
 
 
