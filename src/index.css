@@ -79,8 +79,6 @@ body:has(.participant-portal) .sidebar {
    ===================================================== */
 
 
-===================================================== */
-
 .main-content:has(.event-entry-qr) {
   margin-left: 0 !important;
   width: 100% !important;
