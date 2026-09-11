@@ -5252,3 +5252,107 @@ input:focus-visible {
    No global login, input, public-page or QR selectors are used
    in this polish layer.
    ========================================================= */
+
+/* =========================================================
+   EVENTPULSE AI — FINAL PRODUCT UI OVERRIDE
+   Protected: Login, QR Entry, Announcement
+   Redesigned: all other application screens
+   ========================================================= */
+
+/* APPLICATION SHELL */
+.app-layout { min-height:100vh; background:#f5f7fb !important; color:#182033; }
+.app-layout .main-content { min-height:100vh; margin-left:250px; background:#f5f7fb; color:#182033; }
+
+/* ORGANIZER SIDEBAR — clean product navigation */
+.app-layout .sidebar { background:#11162a; border-right:1px solid #202742; box-shadow:8px 0 30px rgba(20,25,50,.08); }
+.app-layout .side-logo { border-bottom-color:#252d49; }
+.app-layout .side-logo h2 { color:#fff; }
+.app-layout .side-logo small { color:#8993ad; }
+.app-layout .sidebar nav a,.app-layout .side-bottom a { color:#aab3c7; }
+.app-layout .sidebar nav a:hover,.app-layout .side-bottom a:hover { background:#1b2340; color:#fff; transform:none; }
+.app-layout .sidebar nav a.active { background:#28234f; color:#fff; border-color:#5147a8; box-shadow:none; }
+.app-layout .sidebar nav a.active::before { background:#7c6cff; box-shadow:none; }
+
+/* INNER PAGE SURFACES */
+.app-layout .dashboard-header { padding:32px 38px 20px; }
+.app-layout .dashboard-header h1 { color:#182033; font-size:30px; }
+.app-layout .dashboard-header p { color:#68738a; }
+.app-layout .event-title,.app-layout .health-card { border:1px solid #e2e6ef; box-shadow:0 8px 28px rgba(31,41,55,.06); }
+.app-layout .event-title { background:#fff; }
+.app-layout .event-title h2,.app-layout .event-title span { color:#182033; }
+.app-layout .event-title p { color:#6d5ce7; }
+.app-layout .health-card { background:linear-gradient(135deg,#fff,#f7f7ff); }
+.app-layout .health-card h2 { color:#182033; }
+
+.app-layout .card,
+.app-layout .stat-card,
+.app-layout .analytics-card,
+.app-layout .emergency-card,
+.app-layout .ai-copilot-card { background:#fff; border:1px solid #e3e7ef; box-shadow:0 8px 28px rgba(31,41,55,.06); color:#182033; }
+.app-layout .card h1,.app-layout .card h2,.app-layout .card h3,.app-layout .card h4,
+.app-layout .stat-card h2,.app-layout .stat-card h3,.app-layout .analytics-card h2,.app-layout .analytics-card h3,
+.app-layout .emergency-card h2,.app-layout .emergency-card h3 { color:#182033; }
+.app-layout .card p,.app-layout .stat-card p,.app-layout .analytics-card p,.app-layout .emergency-card p { color:#69758b; }
+
+/* PUBLIC / DISCOVERY */
+.public-home { background:#f5f7fb !important; color:#182033 !important; }
+.public-header h1,.public-hero h2,.public-home h2,.public-home h3 { color:#182033; }
+.public-header p,.public-hero p,.public-event-card p { color:#69758b; }
+.public-event-card { background:#fff; border:1px solid #e2e6ef; box-shadow:0 8px 28px rgba(31,41,55,.06); border-radius:18px; }
+.public-event-card button { background:#6657e8; }
+
+/* PARTICIPANT PORTAL */
+body:has(.participant-portal) { background:#f5f7fb !important; }
+body:has(.participant-portal) #root { width:100%; max-width:none; margin:0; border:0; }
+body:has(.participant-portal) .sidebar { display:none !important; }
+.main-content:has(.participant-portal) { margin-left:0 !important; width:100% !important; min-height:100vh; background:#f5f7fb !important; padding:0 !important; }
+
+.participant-portal { min-height:100vh; width:100%; padding:42px 6vw 35px; box-sizing:border-box; background:#f5f7fb; color:#182033; text-align:left; }
+.participant-hero { display:flex; justify-content:space-between; align-items:center; gap:28px; padding:36px 42px; border-radius:22px; background:linear-gradient(135deg,#171b3a 0%,#403083 100%); box-shadow:0 18px 45px rgba(36,34,82,.16); }
+.participant-hero .portal-label { display:block; margin-bottom:10px; color:#bcb4ff; font-size:11px; font-weight:800; letter-spacing:1.8px; }
+.participant-hero h1 { margin:0; color:#fff !important; font-size:38px; line-height:1.15; font-weight:800; letter-spacing:-1px; }
+.participant-hero p { margin:10px 0 0; color:#d8d9e8 !important; font-size:15px; line-height:1.5; }
+.participant-live { padding:10px 16px; border:1px solid rgba(255,255,255,.16); border-radius:999px; background:rgba(255,255,255,.09); color:#fff !important; font-size:11px; font-weight:800; letter-spacing:.7px; white-space:nowrap; }
+.participant-live span { color:#43e39a !important; margin-right:6px; }
+.participant-section { margin-top:40px; }
+.participant-portal .section-heading span { color:#6d5ce7; font-size:11px; font-weight:800; letter-spacing:1.8px; }
+.participant-portal .section-heading h2 { margin:6px 0 22px; color:#182033 !important; font-size:28px; font-weight:800; }
+.participant-feature-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+.participant-feature-card { min-height:218px; display:flex; flex-direction:column; align-items:flex-start; padding:25px; border:1px solid #e1e5ee; border-radius:18px; background:#fff; box-shadow:0 8px 25px rgba(31,41,55,.055); box-sizing:border-box; transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease; }
+.participant-feature-card:hover { transform:translateY(-4px); border-color:#c9c2ff; box-shadow:0 15px 35px rgba(70,55,160,.11); }
+.participant-portal .feature-icon { width:46px; height:46px; display:flex; align-items:center; justify-content:center; margin-bottom:15px; border-radius:13px; background:#f0edff; font-size:21px; }
+.participant-portal .participant-feature-card h3 { margin:0 0 7px; color:#182033 !important; font-size:18px; font-weight:750; }
+.participant-portal .participant-feature-card p { min-height:42px; margin:0; color:#69758b !important; font-size:13px; line-height:1.55; }
+.participant-portal .participant-feature-card button { margin-top:auto; padding:10px 15px; border:0; border-radius:9px; background:#6d5ce7; color:#fff; font-size:11px; font-weight:800; letter-spacing:.25px; cursor:pointer; }
+.participant-portal .participant-feature-card button:hover { background:#5847ca; }
+.participant-portal .participant-feature-card .coming-soon-btn { background:#eceef3 !important; color:#788196 !important; cursor:default; }
+.participant-footer-actions { display:flex; justify-content:space-between; align-items:center; margin-top:40px; padding-top:22px; border-top:1px solid #e1e5ed; }
+.participant-footer-actions button { padding:10px 17px; border:1px solid #dfe3eb; border-radius:9px; background:#fff; color:#4f5b71; font-size:12px; font-weight:700; cursor:pointer; }
+.participant-footer-actions button:hover { border-color:#8a7bf0; color:#6657e8; }
+
+/* REGISTRATION / PASS / CHECK-IN / ATTENDANCE */
+.registration-page,.digital-pass-page,.checkin-page,.attendance-page,.twin-page,.alerts-page,.emergency-page,.analytics-page,.settings-page { color:#182033; }
+.registration-page h1,.registration-page h2,.digital-pass-page h1,.digital-pass-page h2,.checkin-page h1,.checkin-page h2,.attendance-page h1,.attendance-page h2 { color:#182033; }
+.registration-page p,.digital-pass-page p,.checkin-page p,.attendance-page p { color:#69758b; }
+.registration-page .card,.digital-pass-page .card,.checkin-page .card,.attendance-page .attendance-card { background:#fff; border:1px solid #e2e6ef; box-shadow:0 8px 25px rgba(31,41,55,.06); border-radius:18px; }
+.registration-page input,.checkin-page input,.registration-page select { background:#fff; color:#182033; border:1px solid #dfe3eb; border-radius:10px; }
+.registration-page button,.checkin-page button,.digital-pass-page button { border-radius:9px; }
+
+/* AI / ANALYTICS / EMERGENCY — readable product cards */
+.twin-page,.alerts-page,.emergency-page,.analytics-page { background:#f5f7fb; }
+.twin-page h1,.alerts-page h1,.emergency-page h1,.analytics-page h1 { color:#182033; }
+.twin-page p,.alerts-page p,.emergency-page p,.analytics-page p { color:#69758b; }
+
+/* RESPONSIVE */
+@media (max-width:900px) {
+  .participant-portal { padding:28px 22px; }
+  .participant-hero { flex-direction:column; align-items:flex-start; padding:30px; }
+  .participant-feature-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .app-layout .main-content { margin-left:80px; }
+}
+@media (max-width:600px) {
+  .participant-feature-grid { grid-template-columns:1fr; }
+  .participant-hero h1 { font-size:30px; }
+  .participant-live { align-self:flex-start; }
+  .participant-footer-actions { flex-direction:column; align-items:stretch; gap:10px; }
+}

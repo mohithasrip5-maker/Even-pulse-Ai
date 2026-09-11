@@ -2,7 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
-
+import ParticipantDashboard from "./components/ParticipantDashboard";
 import collegeLogo from "./assets/college-logo.jpg";
 import EventEntryQR from "./components/EventEntryQR";
 import Registration from "./components/Registration";
@@ -910,16 +910,45 @@ const announceEvent = async () => {
 
   return (
 
-    <div className="app-layout">
+    <div className={`app-layout page-${page}`}>
 
+
+        <style>{`
+          .app-layout.page-participant-home .sidebar { display:none !important; }
+          .app-layout.page-participant-home .main-content { width:100%; margin:0; padding:0; background:#f6f8fc; }
+          .app-layout.page-participant-home .participant-portal { min-height:100vh; padding:42px clamp(20px,5vw,72px); box-sizing:border-box; }
+          .app-layout.page-participant-home .participant-hero { max-width:1180px; margin:0 auto 32px; padding:34px 38px; border-radius:24px; background:linear-gradient(135deg,#10182f,#24355f); color:#fff; display:flex; align-items:center; justify-content:space-between; gap:24px; box-shadow:0 18px 45px rgba(15,23,42,.14); }
+          .app-layout.page-participant-home .participant-hero h1 { margin:8px 0 10px; color:#fff; font-size:clamp(30px,4vw,44px); line-height:1.1; }
+          .app-layout.page-participant-home .participant-hero p { margin:0; color:#cbd5e1; font-size:16px; }
+          .app-layout.page-participant-home .portal-label { color:#67e8f9; font-size:12px; font-weight:800; letter-spacing:1.5px; }
+          .app-layout.page-participant-home .participant-live { padding:11px 15px; border:1px solid rgba(255,255,255,.18); border-radius:999px; background:rgba(255,255,255,.08); color:#e2e8f0; font-size:11px; font-weight:800; white-space:nowrap; }
+          .app-layout.page-participant-home .participant-live span { color:#4ade80; margin-right:6px; }
+          .app-layout.page-participant-home .participant-section,.app-layout.page-participant-home .participant-footer-actions { max-width:1180px; margin-left:auto; margin-right:auto; }
+          .app-layout.page-participant-home .section-heading { margin-bottom:20px; }
+          .app-layout.page-participant-home .section-heading span { color:#64748b; font-size:11px; font-weight:800; letter-spacing:1.4px; }
+          .app-layout.page-participant-home .section-heading h2 { margin:6px 0 0; color:#172033; font-size:28px; }
+          .app-layout.page-participant-home .participant-feature-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+          .app-layout.page-participant-home .participant-feature-card { min-height:225px; padding:25px; border:1px solid #e2e8f0; border-radius:20px; background:#fff; box-shadow:0 10px 30px rgba(15,23,42,.06); display:flex; flex-direction:column; }
+          .app-layout.page-participant-home .participant-feature-card h3 { margin:0 0 8px; color:#172033; font-size:18px; }
+          .app-layout.page-participant-home .participant-feature-card p { margin:0 0 20px; color:#64748b; font-size:14px; line-height:1.55; flex:1; }
+          .app-layout.page-participant-home .feature-icon { width:48px; height:48px; display:grid; place-items:center; border-radius:14px; background:#eef4ff; font-size:22px; margin-bottom:17px; }
+          .app-layout.page-participant-home .participant-feature-card button { width:100%; border:0; border-radius:10px; padding:11px 14px; background:#172554; color:#fff; font-size:12px; font-weight:800; cursor:pointer; }
+          .app-layout.page-participant-home .participant-feature-card .coming-soon-btn { background:#e9edf4; color:#64748b; cursor:default; }
+          .app-layout.page-participant-home .participant-footer-actions { margin-top:26px; display:flex; justify-content:space-between; gap:12px; }
+          .app-layout.page-participant-home .participant-footer-actions button { border:1px solid #dbe1eb; background:#fff; color:#334155; border-radius:10px; padding:11px 16px; font-weight:700; cursor:pointer; }
+          .app-layout.page-dashboard .main-content,.app-layout.page-alerts .main-content,.app-layout.page-twin .main-content,.app-layout.page-emergency .main-content,.app-layout.page-analytics .main-content,.app-layout.page-settings .main-content { background:#f6f8fc; }
+          @media(max-width:900px){ .app-layout.page-participant-home .participant-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.app-layout.page-participant-home .participant-hero{flex-direction:column;align-items:flex-start;} }
+          @media(max-width:620px){ .app-layout.page-participant-home .participant-portal{padding:22px 16px;}.app-layout.page-participant-home .participant-feature-grid{grid-template-columns:1fr;} .app-layout.page-participant-home .participant-footer-actions{flex-direction:column;} }
+          /* Login, Event QR and announcement styling intentionally untouched. */
+        `}</style>
       {/* =====================================================
           SIDEBAR
       ===================================================== */}
 
       {page !== "login" &&
- page !== "signup" &&
- page !== "public" && (
-
+       page !== "signup" &&
+       page !== "public" &&
+       page !== "participant-home" && (
           <aside className="sidebar">
 
             <div className="side-logo">
@@ -1573,7 +1602,7 @@ const announceEvent = async () => {
           <h3>Digital Event Pass</h3>
           <p>Access your digital pass and event QR code.</p>
 
-          <button onClick={() => setPage("digital-pass")}>
+          <button onClick={() => setPage("digitalpass")}>
             VIEW MY PASS →
           </button>
         </div>
@@ -1585,7 +1614,8 @@ const announceEvent = async () => {
           <p>Use your participant ID or QR code for event check-in.</p>
 
           <button onClick={() => setPage("checkin")}>
-          </button>
+  CHECK IN →
+</button>
         </div>
 
 
