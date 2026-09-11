@@ -20,7 +20,32 @@ function DashboardLive({ setPage, announceEvent }) {
     crowdPercentage: 0,
     riskLevel: "SAFE",
   });
+const submitFeedback = async () => {
+  if (!feedbackRating) {
+    alert("Please select a star rating ⭐");
+    return;
+  }
 
+  try {
+    const response = await axios.post(
+      "https://event-pulse-ai-backend.onrender.com/api/feedback",
+      {
+        eventId: "EVT001",
+        participantId: participantId,
+        rating: feedbackRating,
+        comment: feedbackComment
+      }
+    );
+
+    if (response.data.success) {
+      setFeedbackSubmitted(true);
+      alert(`⭐ Overall Rating: ${feedbackRating}/5\n✅ Feedback saved successfully!`);
+    }
+  } catch (error) {
+    console.log("Feedback Error:", error);
+    alert("Feedback submission failed");
+  }
+};
   const [aiAlert, setAiAlert] = useState(null);
   const [copilotData, setCopilotData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -888,6 +913,9 @@ if (loginRole === "participant") {
       );
     }
   };
+  const [feedbackRating, setFeedbackRating] = useState(0);
+const [feedbackComment, setFeedbackComment] = useState("");
+const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 const announceEvent = async () => {
   try {
     const response = await axios.post(
@@ -1620,24 +1648,63 @@ const announceEvent = async () => {
 <div className="participant-feature-card">
   <div className="feature-icon">💬</div>
   <h3>Event Feedback</h3>
-  <p>Share your experience and help us improve future events.</p>
-  <button
-  onClick={() => {
-    const rating = window.prompt(
-      "Rate your EventPulse AI experience (1-5):"
-    );
+  <p>Rate your experience and share your feedback.</p>
 
-    if (!rating) return;
+  <div style={{ margin: "15px 0" }}>
+    <p style={{ marginBottom: "8px", fontWeight: "600" }}>
+      Overall Rating
+    </p>
 
-    const comment = window.prompt(
-      "Any feedback for the event?"
-    );
+    <div style={{ display: "flex", gap: "6px", justifyContent: "center" }}>
+      {[1, 2, 3, 4, 5].map((star) => (
+        <button
+          key={star}
+          onClick={() => setFeedbackRating(star)}
+          style={{
+            background: "none",
+            border: "none",
+            fontSize: "30px",
+            cursor: "pointer",
+            padding: "2px",
+            color: star <= feedbackRating ? "#fbbf24" : "#cbd5e1"
+          }}
+        >
+          ★
+        </button>
+      ))}
+    </div>
 
-    alert("✅ Feedback submitted successfully!");
-  }}
->
-  GIVE FEEDBACK →
-</button>
+    <p style={{ fontWeight: "600", marginTop: "5px" }}>
+      {feedbackRating ? `${feedbackRating}/5 ⭐` : "Select your rating"}
+    </p>
+  </div>
+
+  <textarea
+    placeholder="Write your feedback..."
+    value={feedbackComment}
+    onChange={(e) => setFeedbackComment(e.target.value)}
+    style={{
+      width: "100%",
+      minHeight: "80px",
+      padding: "10px",
+      borderRadius: "8px",
+      border: "1px solid #cbd5e1",
+      resize: "vertical",
+      boxSizing: "border-box"
+    }}
+  />
+
+  <button onClick={submitFeedback}>
+    {feedbackSubmitted ? "FEEDBACK SAVED ✓" : "SUBMIT FEEDBACK →"}
+  </button>
+
+  {feedbackSubmitted && (
+    <p style={{ color: "green", fontWeight: "600", marginTop: "10px" }}>
+      ⭐ Overall Rating: {feedbackRating}/5
+      <br />
+      Feedback saved successfully!
+    </p>
+  )}
 </div>
 
         <div className="participant-feature-card">
@@ -1645,8 +1712,8 @@ const announceEvent = async () => {
           <h3>My Attendance</h3>
           <p>Track your event and session participation.</p>
 
-          <button className="coming-soon-btn">
-            VIEW ATTENDANCE
+          <button onClick={() => setPage("attendance")}>
+          VIEW ATTENDANCE →
           </button>
         </div>
 
